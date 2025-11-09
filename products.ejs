@@ -1,0 +1,14 @@
+<h2>Products</h2>
+<ul>
+  <% products.forEach(product => { %>
+    <li>
+      <b><%= product.name %></b> - $<%= product.price %>
+      <form action="/orders/place" method="POST">
+        <input type="hidden" name="userId" value="USER_ID_HERE">
+        <input type="hidden" name="products[0][productId]" value="<%= product._id %>">
+        <input type="number" name="products[0][quantity]" value="1">
+        <button type="submit">Order Now</button>
+      </form>
+    </li>
+  <% }) %>
+</ul>
